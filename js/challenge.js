@@ -60,11 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
         value = parseInt(counter.innerText)
         if (typeof favorites[value - 1] === 'undefined') {
             favorites[value - 1] = 1;
+            let listItem = document.createElement('li')
+            listItem.innerText = `${value} has been liked ${favorites[value - 1]} times`
+            listItem.id = `${value}`
+            likesList.appendChild(listItem)
         } else {
             favorites[value - 1] += 1;
+            let listItem = document.getElementById(`${value}`)
+            listItem.innerText = `${value} has been liked ${favorites[value - 1]} times`
         }
-        let listItem = document.createElement('li')
-        listItem.innerText = `${value} has been liked ${favorites[value - 1]} times`
-        likesList.appendChild(listItem)
+        
     })
 });
